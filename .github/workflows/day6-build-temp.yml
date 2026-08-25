@@ -21,3 +21,16 @@ jobs:
         with:
           name: day6-docs-build
           path: docs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: day6-full-project
+          path: |
+            angular.json
+            package.json
+            package-lock.json
+            public
+            src
+            tsconfig.json
+            tsconfig.app.json
+            tsconfig.spec.json
+            docs
