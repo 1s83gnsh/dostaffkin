@@ -13,7 +13,7 @@
             <div class="main-fields">
                 <div class="main-field" id="fromField">
                     <div class="main-pin"></div>
-                    <input id="from" formControlName="from" [attr.disabled]="!!calculationResult()"
+                    <input id="from" formControlName="from" [attr.disabled]="!!orderId()"
                         placeholder="Откуда: начните вводить адрес" autocomplete="off" />
                     <div class="main-ac" id="fromAc" role="listbox" aria-label="Подсказки адресов"></div>
                 </div>
@@ -24,7 +24,7 @@
 
                 <div class="main-field" id="toField">
                     <div class="main-pin"></div>
-                    <input id="to" formControlName="to" [attr.disabled]="!!calculationResult()"
+                    <input id="to" formControlName="to" [attr.disabled]="!!orderId()"
                         placeholder="Куда: начните вводить адрес" autocomplete="off" />
                     <div class="main-ac" id="toAc" role="listbox" aria-label="Подсказки адресов"></div>
                 </div>
@@ -34,7 +34,7 @@
                 }
             </div>
         </div>
-        <div class="main-package" [style.display]="calculationResult() ? 'none' : null">
+        <div class="main-package" [style.display]="orderId() ? 'none' : null">
             <div class="main-block-title">Размер посылки</div>
 
             <div class="main-sizes">
@@ -53,7 +53,7 @@
                 }
             </div>
         </div>
-        <div class="main-speed" [style.display]="calculationResult() ? 'none' : null">
+        <div class="main-speed" [style.display]="orderId() ? 'none' : null">
             <div class="main-block-title">Скорость доставки</div>
 
             <div class="main-speeds">
@@ -66,7 +66,7 @@
                 }
             </div>
         </div>
-        <div class="main-calculate-block" [style.display]="calculationResult() ? 'none' : null">
+        <div class="main-calculate-block" [style.display]="orderId() ? 'none' : null">
             <button id="calc" class="button calculate-button" type="button" [disabled]="routeForm.invalid"
                 (click)="calculate()">Рассчитать</button>
         </div>
