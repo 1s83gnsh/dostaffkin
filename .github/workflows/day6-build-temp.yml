@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - day6-backend-deploy
+    paths-ignore:
+      - 'docs/**'
 
 permissions:
   contents: write
 
 jobs:
   build:
-    if: ${{ !contains(github.event.head_commit.message, 'build: Day 6 GitHub Pages') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,23 +21,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: day6-docs-build
-          path: docs
-      - uses: actions/upload-artifact@v4
-        with:
-          name: day6-full-project
-          path: |
-            angular.json
-            package.json
-            package-lock.json
-            public
-            src
-            tsconfig.json
-            tsconfig.app.json
-            tsconfig.spec.json
-            docs
       - name: Commit docs build
         shell: bash
         run: |
